@@ -3,9 +3,8 @@ FROM bellsoft/liberica-openjdk-alpine:17 AS builder
 WORKDIR /application
 
 COPY .mvn ./.mvn
-COPY mvnw mvnw
-COPY mvnw.cmd mvnw.cmd
-RUN chmod +x mvnw
+COPY mvnw ./mvnw
+RUN sed -i 's/\r$//' ./mvnw && chmod +x ./mvnw
 
 COPY pom.xml .
 RUN ./mvnw dependency:go-offline -B || true
