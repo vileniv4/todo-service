@@ -1,0 +1,31 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.properties
+mvnw
+mvnw.cmd
+
+# IDE
+.idea/
+*.iml
+*.iws
+.vscode/
+
+# Git
+.git/
+.gitignore
+
+# Logs
+logs/*.log
+!logs/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Tests
+src/test/

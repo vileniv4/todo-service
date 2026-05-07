@@ -1,0 +1,2 @@
+# Указываем, что используем Jackson 2 (актуальная версия для Spring Boot 3.x)
+lombok.jacksonized.variant = JACKSON_2
