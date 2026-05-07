@@ -1,8 +1,5 @@
 # Maven
 target/
-!.mvn/wrapper/maven-wrapper.properties
-mvnw
-mvnw.cmd
 
 # IDE
 .idea/
@@ -16,16 +13,10 @@ mvnw.cmd
 
 # Logs
 logs/*.log
-!logs/.gitkeep
 
 # OS
 .DS_Store
 Thumbs.db
 
-# Docker
-Dockerfile
-.dockerignore
-docker-compose.yml
-
-# Tests
+# Tests (опционально)
 src/test/
