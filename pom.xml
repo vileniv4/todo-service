@@ -70,7 +70,6 @@
                 </configuration>
             </plugin>
 
-            <!-- ✅ Компилятор с настройкой аннотационных процессоров для Lombok -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
