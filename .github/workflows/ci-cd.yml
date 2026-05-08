@@ -54,7 +54,7 @@ jobs:
 
   # 🔹 Этап 2: Сборка и публикация Docker-образа
   build-and-push-docker:
-    needs: build-and-test  # ✅ Запускается только если тесты прошли
+    needs: build-and-test
     runs-on: ubuntu-latest
 
     steps:
@@ -89,9 +89,9 @@ jobs:
           cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/todo-service:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/todo-service:buildcache,mode=max
 
-  # 🔹 Этап 3: Деплой на виртуальную машину
+# 🔹 Этап 3: Деплой на виртуальную машину
   deploy:
-    needs: build-and-push-docker  # ✅ Запускается только если Docker-образ собран
+    needs: build-and-push-docker
     runs-on: ubuntu-latest
 
     steps:
@@ -101,6 +101,7 @@ jobs:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_SSH_KEY }}
+          port: 50000
           script: |
             # Остановить старый контейнер
             docker stop todo-service || true
@@ -118,3 +119,6 @@ jobs:
             
             # Очистить старые образы
             docker image prune -f
+            
+            sleep 10
+            curl -f http://localhost:8080/actuator/health || exit 1
